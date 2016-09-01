@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <title>Curso Platzi - React.js</title>
+  </head>
+  <body>
+    <section id="container"></section>
+
+    <script src="http://fb.me/react-0.13.3.js"></script>
+    <script src="http://fb.me/JSXTransformer-0.13.3.js"></script>
+    <script type="text/jsx;harmony=true">
+      class AvatarComponent extends React.Component {
+        render(){
+          var url = `http://icons.iconarchive.com/icons/hopstarter/bioman/64/Bioman-Avatar-1-Red-icon.png`
+          return <img src={url} />
+        }
+      }
+      class ProfileInfoComponent extends React.Component {
+        render() {
+          return <div className="row">
+            <div className="col-3">Nombre: {this.props.name}</div>
+            <div className="col-3">Edad: {this.props.age}</div>
+            <div className="col-3">Email: {this.props.email}</div>
+            <div className="col-3">Movil: {this.props.phone}</div>
+          </div>
+        }
+      }
+      class ProfileComponent extends React.Component {
+        render() {
+          return <div className="container">
+            <div className="row">
+              <h1 className="col-12">{this.props.title}</h1>
+              <div className="col-4"><AvatarComponent /></div>
+              <ProfileInfoComponent
+                name={this.props.name}
+                age={this.props.age}
+                email={this.props.email}
+                phone={this.props.phone} />
+            </div>
+          </div>
+        }
+      }
+      ProfileComponent.propTypes = {
+        name: React.PropTypes.string,
+        age: React.PropTypes.number,
+        email: React.PropTypes.string,
+        phone: React.PropTypes.number
+      }
+      React.render(
+        <ProfileComponent title="Perfil" name="Eduardo" age={34} email="eduardo.andre.contreras@gmail.com" phone={+569-75167340}/>,
+        document.getElementById('container')
+      );
+
+    </script>
+  </body>
+</html>
